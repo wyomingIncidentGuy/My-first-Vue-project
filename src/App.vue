@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" @click = "show = false">
     <header>
         <h1>FIRST VUE BLOG</h1>
         <transition name = "fade">
@@ -8,10 +8,10 @@
     </header>
     <form v-on:submit.prevent="onSubmit" id = "create_post">
         <h3>Create post</h3>
-        <input v-bind:value = "title" @input = "inputPostTitle" @click = "show = false" class = "input_title" type="text" maxlength="50" placeholder = "Print title here...">
-        <input v-bind:value = "theme" @input = "inputPostTheme" @click = "show = false" type="text" maxlength="20" class = "input_theme" placeholder = "Print theme here...">
-        <textarea v-bind:value = "body" @input = "inputPostBody" @click = "show = false" class = "input_body" id="input_body" maxlength="500" cols="30" rows="10" placeholder="Print text here..."></textarea>
-        <button @click = "createPost">Submit</button>
+        <input v-bind:value = "title" @input = "inputPostTitle" class = "input_title" type="text" maxlength="50" placeholder = "Print title here...">
+        <input v-bind:value = "theme" @input = "inputPostTheme" type="text" maxlength="20" class = "input_theme" placeholder = "Print theme here...">
+        <textarea v-bind:value = "body" @input = "inputPostBody" class = "input_body" id="input_body" maxlength="500" cols="30" rows="10" placeholder="Print text here..."></textarea>
+        <button @click = "createPost" v-on:click.stop="doThis">Submit</button>
     </form>
     <div class="welcome_message">
 

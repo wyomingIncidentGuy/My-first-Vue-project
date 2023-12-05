@@ -14,7 +14,7 @@
         <button @click = "createPost" v-on:click.stop="doThis">Submit</button>
     </form>
     <div class="welcome_message">
-
+        There are no posts here yet
     </div>
     <div class="post" v-for = "post in posts">
         <h3 class="title">{{ post.title }}</h3>
@@ -250,6 +250,11 @@
         border: 1px solid grey;
         background:none;
         cursor:pointer;
+    }
+
+    .welcome_message{
+        color:grey;
+        font-family: 'Roboto regular';
     }
 
     button:hover{

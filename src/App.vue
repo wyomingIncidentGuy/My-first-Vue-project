@@ -174,7 +174,6 @@
         flex-direction:column;
         border-bottom: 1px solid #cfcdcd;
         padding-bottom:15px;
-        
     }
 
     .post{

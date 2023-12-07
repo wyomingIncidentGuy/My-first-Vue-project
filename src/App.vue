@@ -13,7 +13,7 @@
         <textarea v-bind:value = "body" @input = "inputPostBody" class = "input_body" id="input_body" maxlength="500" cols="30" rows="10" placeholder="Print text here..."></textarea>
         <button @click = "createPost" v-on:click.stop="doThis">Submit</button>
     </form>
-    <div class="welcome_message">
+    <div class="welcome_message" v-if = "showMessage">
         There are no posts here yet
     </div>
     <div class="post" v-for = "post in posts">
@@ -37,7 +37,8 @@
             body:'',
             theme:'',
             date:'',
-            show:false
+            show:false,
+            showMessage:true
         }
     },
     methods: {
@@ -80,6 +81,7 @@
                 this.date = '';
                 this.body = '';
                 this.id = '';
+                this.showMessage = false;
             }
 
             
@@ -92,7 +94,7 @@
         },
         inputPostBody(event){
             this.body = event.target.value;
-        }
+        },
     }
   }
 </script>

@@ -43,7 +43,10 @@
     },
 
     mounted(){
-        
+        for(let i = 0; i < localStorage.length; i++){
+            let key = localStorage.key(0);
+            
+        }
     },
 
     methods: {
@@ -80,12 +83,9 @@
                 this.show = !this.show;
             }
             else{
-                for(let post in posts){
-                    let JSONpost = localStorage.setItem(post.id, JSON.stringify(post));
-
-                }
-
+                
                 this.posts.unshift(newPost);
+                localStorage.setItem(this.id, JSON.stringify(newPost));
                 this.title = '';
                 this.theme = '';
                 this.date = '';

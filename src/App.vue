@@ -41,6 +41,11 @@
             showMessage:true
         }
     },
+
+    mounted(){
+        
+    },
+
     methods: {
         createPost(){
             function getThisDate(){
@@ -75,6 +80,11 @@
                 this.show = !this.show;
             }
             else{
+                for(let post in posts){
+                    let JSONpost = localStorage.setItem(post.id, JSON.stringify(post));
+
+                }
+
                 this.posts.unshift(newPost);
                 this.title = '';
                 this.theme = '';
@@ -83,18 +93,20 @@
                 this.id = '';
                 this.showMessage = false;
             }
-
             
         },
+
         inputPostTitle(event){
             this.title =  event.target.value;
         },
+
         inputPostTheme(event){
             this.theme = event.target.value;
         },
+
         inputPostBody(event){
             this.body = event.target.value;
-        },
+        }
     }
   }
 </script>

@@ -350,5 +350,9 @@
         .alert{
             font-size: 36px;
         }
+
+        form{
+            border-width:3px;
+        }
     }
 </style>

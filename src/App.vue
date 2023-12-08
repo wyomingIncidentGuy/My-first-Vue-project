@@ -255,6 +255,7 @@
     }
 
     .welcome_message{
+        margin-top:10px;
         color:grey;
         font-family: 'Roboto regular';
     }

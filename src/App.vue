@@ -1,7 +1,7 @@
 <template>
   <div class="app" @click = "show = false">
     <header>
-        <h1>FIRST VUE BLOG</h1>
+        <h1>FIRST VUE BLOG ver.1</h1>
         <transition name = "fade">
             <div v-if = "show" class="alert">Post must contain title, text and theme</div>
         </transition>

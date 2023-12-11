@@ -16,12 +16,13 @@
     <div class="welcome_message" v-if = "showMessage">
         There are no posts here yet
     </div>
-    <div class="post" v-for = "post in posts">
+    <div class="post" v-bind:id="id" v-for = "post in posts">
         <h3 class="title">{{ post.title }}</h3>
         <div class = "info">
             <span class="theme">{{ post.theme }}</span> | <span class="date">{{ post.date }}</span>
         </div>
         <div class = "body">{{ post.body }}</div>
+        <button @click = "removeItem" class = "deleteButton">delete</button>
     </div>
   </div>
 </template>
@@ -43,9 +44,14 @@
     },
 
     mounted(){
+        if(localStorage.length > 0){
+            this.showMessage = false;
+        }
+
         for(let i = 0; i < localStorage.length; i++){
-            let key = localStorage.key(0);
-            
+            let key = localStorage.key(i);
+            let storedPost = JSON.parse(localStorage.getItem(key));
+            this.posts.unshift(storedPost);
         }
     },
 
@@ -83,17 +89,15 @@
                 this.show = !this.show;
             }
             else{
-                
                 this.posts.unshift(newPost);
                 localStorage.setItem(this.id, JSON.stringify(newPost));
+                this.showMessage = false;
                 this.title = '';
                 this.theme = '';
                 this.date = '';
                 this.body = '';
                 this.id = '';
-                this.showMessage = false;
             }
-            
         },
 
         inputPostTitle(event){
@@ -106,6 +110,10 @@
 
         inputPostBody(event){
             this.body = event.target.value;
+        },
+
+        removeItem(){
+            
         }
     }
   }

@@ -16,7 +16,7 @@
     <div class="welcome_message" v-if = "showMessage">
         There are no posts here yet
     </div>
-    <div class="post" v-bind:id="id" v-for = "post in posts">
+    <div class="post" :id="post.id" v-for = "post in posts">
         <h3 class="title">{{ post.title }}</h3>
         <div class = "info">
             <span class="theme">{{ post.theme }}</span> | <span class="date">{{ post.date }}</span>
@@ -39,7 +39,7 @@
             theme:'',
             date:'',
             show:false,
-            showMessage:true
+            showMessage:true,
         }
     },
 

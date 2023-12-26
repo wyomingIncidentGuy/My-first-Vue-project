@@ -22,7 +22,7 @@
             <span class="theme">{{ post.theme }}</span> | <span class="date">{{ post.date }}</span>
         </div>
         <div class = "body">{{ post.body }}</div>
-        <button @click = "removeItem" class = "deleteButton">delete</button>
+        <button @click.self = "removeItem" class = "deleteButton">delete</button>
     </div>
   </div>
 </template>
@@ -112,8 +112,11 @@
             this.body = event.target.value;
         },
 
-        removeItem(){
-            
+        removeItem(event){
+            let parent = event.target.parentElement;
+
+            localStorage.removeItem(parent.id);
+
         }
     }
   }
@@ -316,7 +319,7 @@
       opacity: 0;
     }
 
-    @media screen and (max-width:1000px){
+    @media screen and (orientation: portrait){
 
         h1{
             font-size: 48px;
@@ -373,6 +376,11 @@
 
         form{
             border-width:3px;
+        }
+
+        .welcome_message{
+            font-size:48px;
+            margin-top:24px;
         }
     }
 </style>

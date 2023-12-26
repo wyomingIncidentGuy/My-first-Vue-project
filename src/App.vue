@@ -17,14 +17,17 @@
         There are no posts here yet
     </div>
     <div class="post" :id="post.id" v-for = "post in posts">
-        <h3 class="title">{{ post.title }}</h3>
-        <div class = "info">
-            <span class="theme">{{ post.theme }}</span> | <span class="date">{{ post.date }}</span>
+        <div class="content">
+            <h3 class="title">{{ post.title }}</h3>
+            <div class = "info">
+                <span class="theme">{{ post.theme }}</span> | <span class="date">{{ post.date }}</span>
+            </div>
+            <div class = "body">{{ post.body }}</div>
         </div>
-        <div class = "body">{{ post.body }}</div>
-        <button @click.self = "removeItem" class = "deleteButton">
-            <img src="../public/images/trash bin.png" alt="" class = "deleteIcon">
-        </button>
+        
+        <div class="editPostButtons">
+            <button @click.self = "removeItem" class = "deleteButton"></button>
+        </div>
     </div>
   </div>
 </template>
@@ -115,7 +118,7 @@
         },
 
         removeItem(event){
-            let parent = event.target.parentElement;
+            let parent = event.target.parentElement.parentElement;
 
             localStorage.removeItem(parent.id);
             for(let post of this.posts){
@@ -209,10 +212,20 @@
     }
 
     .post{
+        display: flex;
+        flex-direction: row;
         width: 600px;
+        max-width: 600px;
         margin-top:15px;
         border-bottom: 1px solid #cfcdcd;
         padding-bottom:15px;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 570px;
+        max-width: 570px;
     }
 
     .post > *{
@@ -236,7 +249,9 @@
     }
 
     .body{
+        justify-content: space-between;
         font-family:'Roboto regular';
+        width: 90%;
     }
 
     input{
@@ -308,8 +323,20 @@
 
     .deleteButton{
         border:none;
-        width: fit-content;
-        height: fit-content;
+        width: 40px;
+        height: 40px;
+        background: url('../public/images/trash\ bin.png') center no-repeat;
+        background-size: cover;
+    }
+
+    .deleteButton:hover{
+        background-color:transparent;
+    }
+
+    .editPostButtons{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
     }
 
     .alert{

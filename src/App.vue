@@ -22,7 +22,9 @@
             <span class="theme">{{ post.theme }}</span> | <span class="date">{{ post.date }}</span>
         </div>
         <div class = "body">{{ post.body }}</div>
-        <button @click.self = "removeItem" class = "deleteButton">delete</button>
+        <button @click.self = "removeItem" class = "deleteButton">
+            <img src="../public/images/trash bin.png" alt="" class = "deleteIcon">
+        </button>
     </div>
   </div>
 </template>
@@ -116,7 +118,12 @@
             let parent = event.target.parentElement;
 
             localStorage.removeItem(parent.id);
-
+            for(let post of this.posts){
+                if(post.id == parent.id){
+                   let index = this.posts.indexOf(post);
+                   this.posts.splice(index, 1);
+                }
+            }
         }
     }
   }
@@ -297,6 +304,12 @@
     input:focus::-webkit-input-placeholder 
     {
         color: transparent;
+    }
+
+    .deleteButton{
+        border:none;
+        width: fit-content;
+        height: fit-content;
     }
 
     .alert{

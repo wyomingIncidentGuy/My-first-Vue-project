@@ -6,7 +6,7 @@
             <div v-if = "show" class="alert">Post must contain title, text and theme</div>
         </transition>
     </header>
-    <form v-on:submit.prevent="onSubmit" id = "create_post">
+    <form id = "create_post">
         <h3>Create post</h3>
         <input v-bind:value = "title" @input = "inputPostTitle" class = "input_title" type="text" maxlength="50" placeholder = "Print title here...">
         <input v-bind:value = "theme" @input = "inputPostTheme" type="text" maxlength="20" class = "input_theme" placeholder = "Print theme here...">
